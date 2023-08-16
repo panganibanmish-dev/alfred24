@@ -7,7 +7,8 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     env: {
-      
+      login_username: "jett",
+      login_password: "9wacn9kLVSUzpG4y",
     },
   },
   requestTimeout: 30000,
