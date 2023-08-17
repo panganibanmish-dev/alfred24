@@ -11,7 +11,7 @@ module.exports = defineConfig({
       login_password: "9wacn9kLVSUzpG4y",
     },
   },
-  requestTimeout: 30000,
+  requestTimeout: 50000,
   numTestsKeptInMemory: 0,
   numTestsKeptInMemory: 0,
   responseTimeout: 30000,

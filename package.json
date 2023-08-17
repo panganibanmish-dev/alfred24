@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress_open" : "npx cypress open"
+    "cypress_open": "npx cypress open"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^12.17.3"
+  },
+  "dependencies": {
+    "cypress-real-events": "^1.10.0"
   }
 }
