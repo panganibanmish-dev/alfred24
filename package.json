@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress_open": "npx cypress open"
+    "cypress_open": "npx cypress open",
+    "report": "npm run test -- --reporter mochawesome && npx marge cypress/reports/*.json",
+    "allure-serve": "allure-results",
+    "allure-generate": "allure-results",
+    "allure-report": "npx allure generate allure-results --clean allure-report",
+    "test_run" : "npx cypress run --spec cypress/e2e/MEC_Integration/Settings_Services/settings_services_part2.cy.js --browser chrome --record --key bc71a28e-84fd-437e-9bd2-39716bce3f81"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.0",
     "cypress": "^12.17.3"
   },
   "dependencies": {

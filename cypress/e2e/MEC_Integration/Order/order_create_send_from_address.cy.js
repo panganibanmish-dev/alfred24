@@ -632,14 +632,14 @@ describe('MEC Integration - ORDER CREATE PAGE (SERVICE TYPE: SEND FROM ADDRESS) 
         cy.get('div div[class="flex items-center pr-9 text-p h-32 text-alfred-black-70 undefined"] div[class="w-max pl-5 pr-8"]').should('contain', 'Recreate').click();
         cy.get('div[class="flex flex-col flex-grow-0 w-1/2"] div[class="font-bold text-alfred-black-50 text-pt pb-5"]').should('contain', 'Extra handling fee');
     });
-    // it('MECIT#138 - should verify that the Download waybill is clickable and responsive when clicked', () => {
-    //     elements.order_sidebar().should('be.visible').click();
-    //     elements.sub_myOrders().should('contain', 'My orders').click();
-    //     cy.get('div[class="w-38 h-38 flex items-center justify-center text-alfred-black-50 hover:text-alfred-black-70"]').eq(0).should('be.visible').realHover('mouse');
-    //     cy.get('div[class="w-38 h-38 flex items-center justify-center text-alfred-black-50 hover:text-alfred-black-70"]').eq(0).should('be.visible').click();
-    //     cy.get('div div[class="flex items-center pr-9 text-p h-32 text-alfred-black-70 undefined"] div[class="w-max pl-5 pr-8"]').should('contain', 'Recreate').click();
-    //     cy.get('div[class="flex flex-col flex-grow-0 w-1/2"] div[class="font-bold text-alfred-black-50 text-pt pb-5"]').should('contain', 'Extra handling fee');
-    // });
+    it('MECIT#138 - should verify that the Download waybill is clickable and responsive when clicked', () => {
+        elements.order_sidebar().should('be.visible').click();
+        elements.sub_myOrders().should('contain', 'My orders').click();
+        cy.get('div[class="w-38 h-38 flex items-center justify-center text-alfred-black-50 hover:text-alfred-black-70"]').eq(0).should('be.visible').realHover('mouse');
+        cy.get('div[class="w-38 h-38 flex items-center justify-center text-alfred-black-50 hover:text-alfred-black-70"]').eq(0).should('be.visible').click();
+        cy.get('div div[class="flex items-center pr-9 text-p h-32 text-alfred-black-70 undefined"] div[class="w-max pl-5 pr-8"]').should('contain', 'Recreate').click();
+        cy.get('div[class="flex flex-col flex-grow-0 w-1/2"] div[class="font-bold text-alfred-black-50 text-pt pb-5"]').should('contain', 'Extra handling fee');
+    });
     it('MECIT#142 - should verify that the user can view the Orders permission for merchant', () => {
         elements.order_sidebar().should('be.visible').click();
         elements.sub_myOrders().should('contain', 'My orders').click();
