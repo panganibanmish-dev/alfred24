@@ -1,109 +1,18 @@
+import OrderCreateSendFromAddressPage from "../../../pages/MEC Integration/Order/OrderCreateSendFromAddressPage";
 describe('MEC Integration - ORDER CREATE PAGE (SERVICE TYPE: SEND FROM ADDRESS) Page Test Suite', () => {
-    let elements
-    elements = {
-        input_email_username: () => cy.get("div[class='relative flex items-center'] input[placeholder='Your email or username']"),
-        input_password: () => cy.get("div[class='relative flex items-center'] input[placeholder='Your password']"),
-        buttonSubmit: () => cy.get('div[class="relative mt-20"] span button[type="submit"]'),
-        order_sidebar: () => cy.get('a[href="/en/order/listing/"]'),
-        sub_myOrders: () => cy.get('a[href="/en/order/listing/"] div[class="w-full inline-block"]'),
-        manual_add: () => cy.get('div[class="flex items-center"] div[class="w-max pr-10"]'),
-        selectService: () => cy.get('div[class="relative flex-shrink-0 cursor-pointer transition-all mr-20 flex items-center py-14 text-alfred-lightBlue2-100"]'),
-        label: () => cy.get('div[class="text-h5 font-bold leading-p text-alfred-black-70 flex items-center space-x-8"] span'),
-        input: () => cy.get('div[class="relative flex items-center"] input'),
-    },
     beforeEach(() => {
-        cy.viewport(1800, 1000)
-        cy.visit('/login')
-        elements.input_email_username().should('be.visible').type(Cypress.env('login_username'));
-        elements.input_password().should('be.visible').type(Cypress.env('login_password'));
-        elements.buttonSubmit().should('be.visible').click();
+        cy.login(Cypress.env("login_username"), Cypress.env("login_password"));
+        cy.viewport(1800, 1000);
+        cy.visit("/order/listing/");
     });
-    it('MECIT#69 - should verify that the Order create page changes when the user has the service type: "send from address"', () => {
-        elements.order_sidebar().should('be.visible').click();
-        elements.sub_myOrders().should('contain', 'My orders').click();
-        cy.get('div[class="flex justify-center items-center"] div').should('contain', 'Add').realHover('mouse');
-        elements.manual_add().eq(0).should('contain', 'Manual add').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('be.visible').click();
-        cy.get('input[placeholder]').should('be.visible').type('QA Testing Main Merchant');
-        elements.selectService().should('contain', 'Send from address 上門收寄件').click();
-        elements.label().should('contain', 'Sender');
-        elements.label().should('contain', 'Shipment details');
-        cy.get('div[class="ml-8 text-h5 font-bold leading-p mt-20 mb-0 text-alfred-black-70"]').should('contain', 'Courier');
+    it('MECIT#69 to MECIT#70 - should verify that the Order create page changes when the user has the service type: "send from address" and the following fields are available at the send parcel tab', () => {
+        OrderCreateSendFromAddressPage.sendfromaddress();
     });
-    it('MECIT#70 - should verify that the following fields are available at the Send Parcel tab: Contact Name field, Phone number field, Pickup address field, Courier pickup notes field, Order reference number field, Number of parcel field, Contenct category dropdown, Weight field, Sizes field, Courier card field, & Add order button', () => {
-        elements.order_sidebar().should('be.visible').click();
-        elements.sub_myOrders().should('contain', 'My orders').click();
-        cy.get('div[class="flex justify-center items-center"] div').should('contain', 'Add').realHover('mouse');
-        elements.manual_add().eq(0).should('contain', 'Manual add').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('be.visible').click();
-        cy.get('input[placeholder]').should('be.visible').type('QA Testing Main Merchant');
-        elements.selectService().should('contain', 'Send from address 上門收寄件').click();
-        elements.label().should('contain', 'Sender');
-        elements.input().eq(0).should('be.visible').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="Sender phone number"]').should('be.visible').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('contain', 'Select district').click();
-        cy.get('div[class="relative flex items-baseline"] textarea[placeholder="Notes for courier when collection"]').should('be.visible').click();
-        cy.get('div[class="relative flex items-baseline"] textarea[placeholder="Collection address"]').should('be.visible').click();
-        elements.label().should('contain', 'Shipment details');
-        cy.get('div[class="relative flex items-center"] input[placeholder="e.g. ABC0123"]').should('be.visible').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="1"]').should('be.visible').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('contain', 'Select product type').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="0.5"]').should('be.visible').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="10"]').eq(0).should('be.visible').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="10"]').eq(1).should('be.visible').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="10"]').eq(2).should('be.visible').click();
-        cy.get('div[class="ml-8 text-h5 font-bold leading-p mt-20 mb-0 text-alfred-black-70"]').should('contain', 'Courier');
+    it('MECIT#71 to MECIT#73 - should verify that the Number of parcel is a required field, accepts numerical characters and does not accepts Non-numerical characters', () => {
+        OrderCreateSendFromAddressPage.numberofParcel();
     });
-    it('MECIT#71 - should verify that the Number of parcel field accepts numerical characters', () => {
-        elements.order_sidebar().should('be.visible').click();
-        elements.sub_myOrders().should('contain', 'My orders').click();
-        cy.get('div[class="flex justify-center items-center"] div').should('contain', 'Add').realHover('mouse');
-        elements.manual_add().eq(0).should('contain', 'Manual add').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('be.visible').click();
-        cy.get('input[placeholder]').should('be.visible').type('QA Testing Main Merchant');
-        elements.selectService().should('contain', 'Send from address 上門收寄件').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="1"]').should('be.visible').type('2');
-    });
-    it('MECIT#72 - should verify that the Number of parcel field does not accepts Non-numerical characters', () => {
-        elements.order_sidebar().should('be.visible').click();
-        elements.sub_myOrders().should('contain', 'My orders').click();
-        cy.get('div[class="flex justify-center items-center"] div').should('contain', 'Add').realHover('mouse');
-        elements.manual_add().eq(0).should('contain', 'Manual add').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('be.visible').click();
-        cy.get('input[placeholder]').should('be.visible').type('QA Testing Main Merchant');
-        elements.selectService().should('contain', 'Send from address 上門收寄件').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="1"]').should('be.visible').type('a');
-    });
-    it('MECIT#73 - should verify that the Number of parcel fields is a required field', () => {
-        elements.order_sidebar().should('be.visible').click();
-        elements.sub_myOrders().should('contain', 'My orders').click();
-        cy.get('div[class="flex justify-center items-center"] div').should('contain', 'Add').realHover('mouse');
-        elements.manual_add().eq(0).should('contain', 'Manual add').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('be.visible').click();
-        cy.get('input[placeholder]').should('be.visible').type('QA Testing Main Merchant');
-        elements.selectService().should('contain', 'Send from address 上門收寄件').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="1"]').should('be.visible').clear();
-    });
-    it('MECIT#75 - should verify that the default value at the Number of parcel field is "1"', () => {
-        elements.order_sidebar().should('be.visible').click();
-        elements.sub_myOrders().should('contain', 'My orders').click();
-        cy.get('div[class="flex justify-center items-center"] div').should('contain', 'Add').realHover('mouse');
-        elements.manual_add().eq(0).should('contain', 'Manual add').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('be.visible').click();
-        cy.get('input[placeholder]').should('be.visible').type('QA Testing Main Merchant');
-        elements.selectService().should('contain', 'Send from address 上門收寄件').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="1"]').should('be.visible');
-    });
-    it('MECIT#75(1) - should verify that the maximum number that can be inputted at the "Number of parcel field is "10"', () => {
-        elements.order_sidebar().should('be.visible').click();
-        elements.sub_myOrders().should('contain', 'My orders').click();
-        cy.get('div[class="flex justify-center items-center"] div').should('contain', 'Add').realHover('mouse');
-        elements.manual_add().eq(0).should('contain', 'Manual add').click();
-        cy.get('div[class="py-2 inline-block text-p leading-1 mr-32"]').should('be.visible').click();
-        cy.get('input[placeholder]').should('be.visible').type('QA Testing Main Merchant');
-        elements.selectService().should('contain', 'Send from address 上門收寄件').click();
-        cy.get('div[class="relative flex items-center"] input[placeholder="1"]').should('be.visible');
-        cy.get('div[class="relative flex items-center"] input[placeholder="1"]').should('be.visible').type("10");
+    it('MECIT#75 to MECIT#75(1) - should verify that the default value at the Number of parcel field is "1" and the maximum number that can be inputted at the "Number of parcel field is "10"', () => {
+        OrderCreateSendFromAddressPage.defaultAndmaxInputNumber();
     });
     it('MECIT#76 - should verify that the Contact name field is pre-filled with Merchants name when creating an order,', () => {
         elements.order_sidebar().should('be.visible').click();

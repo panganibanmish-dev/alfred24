@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-08-23T05:36:08.044Z",
+    "end": "2023-08-23T05:36:09.737Z",
+    "duration": 1693,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9f04cec0-00bc-452a-89cc-f8f87ab45872",
+      "title": "",
+      "fullFile": "cypress\\e2e\\MEC_Integration\\my_orders_details_number_of_parcels.cy.js",
+      "file": "cypress\\e2e\\MEC_Integration\\my_orders_details_number_of_parcels.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "54d085a9-e803-49f6-b6b8-bfaa7e047248",
+          "title": "MEC Integration - MyOrders | Order details > Number of Parcels Page Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "MECIT#28 - ",
+              "fullTitle": "MEC Integration - MyOrders | Order details > Number of Parcels Page Test Suite MECIT#28 - ",
+              "timedOut": null,
+              "duration": 392,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "TypeError: elements.input_email_username is not a function\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `MEC Integration - MyOrders ...`",
+                "estack": "TypeError: elements.input_email_username is not a function\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `MEC Integration - MyOrders ...`\n    at Context.eval (webpack:///./cypress/e2e/MEC_Integration/my_orders_details_number_of_parcels.cy.js:9:17)",
+                "diff": null
+              },
+              "uuid": "6b806f0b-0578-450b-b2f9-28152c94432b",
+              "parentUUID": "54d085a9-e803-49f6-b6b8-bfaa7e047248",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "6b806f0b-0578-450b-b2f9-28152c94432b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 392,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

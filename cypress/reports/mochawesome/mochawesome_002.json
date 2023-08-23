@@ -1,0 +1,209 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 4,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-08-23T05:29:22.843Z",
+    "end": "2023-08-23T05:34:57.728Z",
+    "duration": 334885,
+    "testsRegistered": 6,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c1222344-1817-4429-b67a-e66525d81493",
+      "title": "",
+      "fullFile": "cypress\\e2e\\signup.cy.js",
+      "file": "cypress\\e2e\\signup.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d45cc96b-4048-4db7-ab67-f3e3d6da2599",
+          "title": "Sign Up Page Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "SU#01 - should be verify that the following fields and buttons are present on the signup page.",
+              "fullTitle": "Sign Up Page Test Suite SU#01 - should be verify that the following fields and buttons are present on the signup page.",
+              "timedOut": null,
+              "duration": 25310,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "elements.regs_email().should('be.visible');\nelements.regs_tel().should('be.visible');\nelements.regs_password().should('be.visible');\nelements.regs_promocode().should('be.visible');\nelements.link_terms().should('contain', '服務及使用條款');\nelements.link_terms().should('contain', '服務收費');\nelements.btnSubmit().should('be.visible');",
+              "err": {},
+              "uuid": "55066454-b678-4881-beb0-35a4f757b6e1",
+              "parentUUID": "d45cc96b-4048-4db7-ab67-f3e3d6da2599",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SU#02 - should be verify that the required fields has an indicator(e.g. asterisk)",
+              "fullTitle": "Sign Up Page Test Suite SU#02 - should be verify that the required fields has an indicator(e.g. asterisk)",
+              "timedOut": null,
+              "duration": 25265,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "elements.btnSubmit().should('be.visible').click();\nelements.error_msg_email().should('contain', '必填欄');\nelements.error_msg_tel().should('contain', '必填欄');\n//password validator\ncy.get('#password-check-1').should('contain', '必須要有8-20個字元');\ncy.get('#password-check-2').should('contain', '必須要有至少一個大楷');\ncy.get('#password-check-3').should('contain', '必須要有至少一個小楷');\ncy.get('#password-check-4').should('contain', '必須要有至少一個數字');\n//checkbox required\ncy.get('#checkbox_2-error').should('contain', '請同意alfred24的使用條款');",
+              "err": {},
+              "uuid": "32e84626-5048-441f-9f30-1af40f57208a",
+              "parentUUID": "d45cc96b-4048-4db7-ab67-f3e3d6da2599",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SU#05 - should be verify that the email field accepts valid email addresses",
+              "fullTitle": "Sign Up Page Test Suite SU#05 - should be verify that the email field accepts valid email addresses",
+              "timedOut": null,
+              "duration": 25488,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "elements.regs_email().should('be.visible').type('test_user01@mailinator.com');",
+              "err": {},
+              "uuid": "4f58c874-42e6-436f-8cda-f10f07d227d1",
+              "parentUUID": "d45cc96b-4048-4db7-ab67-f3e3d6da2599",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SU#07 - should be verify that a prompt is present when an invalid email is entered",
+              "fullTitle": "Sign Up Page Test Suite SU#07 - should be verify that a prompt is present when an invalid email is entered",
+              "timedOut": null,
+              "duration": 75310,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "elements.regs_email().should('be.visible').type('testuser01mailinator.com');\nelements.error_msg_email().should('contain', '請輸入有效的電子郵件地址');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `label#contact_email-error`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `label#contact_email-error`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/signup.cy.js:54:35)",
+                "diff": null
+              },
+              "uuid": "848ead7f-3ee5-4454-b58a-24dc3ddc7f4e",
+              "parentUUID": "d45cc96b-4048-4db7-ab67-f3e3d6da2599",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SU#08 - should be verify that the email field does not accept blank values",
+              "fullTitle": "Sign Up Page Test Suite SU#08 - should be verify that the email field does not accept blank values",
+              "timedOut": null,
+              "duration": 52570,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "elements.regs_email().should('be.visible');\nelements.error_msg_email().should('contain', '必填欄');\nelements.regs_tel().should('be.visible').type('3333333333333');\nelements.regs_password().should('be.visible').type('Password@12');\nelements.regs_promocode().should('be.visible');\nelements.checkboxAgree().should('be.visible').click();\nelements.link_terms().should('contain', '服務及使用條款');\nelements.link_terms().should('contain', '服務收費');\nelements.btnSubmit().should('be.visible').click();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `label#contact_email-error`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `label#contact_email-error`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/signup.cy.js:58:35)",
+                "diff": null
+              },
+              "uuid": "36bbc903-cf95-4985-8967-6b3418cb0015",
+              "parentUUID": "d45cc96b-4048-4db7-ab67-f3e3d6da2599",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SU#11 - should be verify that a prompt message appears when the user enters a duplicate email",
+              "fullTitle": "Sign Up Page Test Suite SU#11 - should be verify that a prompt message appears when the user enters a duplicate email",
+              "timedOut": null,
+              "duration": 3234,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "1d66c678-55ba-4067-a320-df6c19223cd7",
+              "parentUUID": "d45cc96b-4048-4db7-ab67-f3e3d6da2599",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "55066454-b678-4881-beb0-35a4f757b6e1",
+            "32e84626-5048-441f-9f30-1af40f57208a",
+            "4f58c874-42e6-436f-8cda-f10f07d227d1",
+            "1d66c678-55ba-4067-a320-df6c19223cd7"
+          ],
+          "failures": [
+            "848ead7f-3ee5-4454-b58a-24dc3ddc7f4e",
+            "36bbc903-cf95-4985-8967-6b3418cb0015"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 207177,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
