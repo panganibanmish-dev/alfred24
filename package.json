@@ -10,7 +10,7 @@
     "allure-serve": "allure-results",
     "allure-generate": "allure-results",
     "allure-report": "npx allure generate allure-results --clean allure-report",
-    "test_run": "npx cypress run --spec cypress/e2e/MEC_Integration/Order/order_my_order.cy.js --browser chrome --record --key bc71a28e-84fd-437e-9bd2-39716bce3f81",
+    "test_run": "npx cypress run --record --key bc71a28e-84fd-437e-9bd2-39716bce3f81 --browser chrome",
     "headless_stg": "npx cypress run --config-file cypress.config.js --browser chrome"
   },
   "author": "",
